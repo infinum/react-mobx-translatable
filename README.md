@@ -33,11 +33,14 @@ Method receives ``injectFn`` - function that maps the i18n object from the store
 * Default: ``(store) => {i18n: i18n.store}``
 * If you have the i18n object in the root of the store (the default function can map the value), you don't need to call ``init``
 
-#### translatable(Component)
+#### translatable(Component|String[])
 
-Method receives a component that should be decorated and returns the wrapped component. Translatable decorator is also making the Component an observer.
+Method can receive either an array of strings or a React component.
 
-Note: If using with other decorators, ``translatable`` should be the innermost.
+* Array of strings - Used for connecting the store from ``Provider`` to the component. Translatable is returning a new function that accepts a React component.
+* React component - The function will wrap the passed component
+
+In both cases, the wrapped component will also be an observer. If using with other decorators, ``translatable`` should be the innermost one.
 
 ## Example
 
@@ -83,11 +86,22 @@ This is however not a requirement.
     import {Component} from 'react';
     import {translatable} from 'translatable';
 
+    @translatable
     export default class MyComponent extends Component {
       render() {
         return <div>{this.t('hello')}</div>
       }
     }
+
+## Changelog
+
+### v1.1.0
+
+* Add ability to connect the store with the component
+
+### v1.0.0
+
+* Initial release
 
 ## License
 [MIT License](LICENSE)

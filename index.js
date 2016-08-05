@@ -20,9 +20,10 @@ function init(injectFn) {
  * Wrap a React Component in order to make it translatable (decorator)
  *
  * @param  {Component} Component - Component to be wrapped
+ * @param {String[]} [connect=undefined] - Connect store to the component
  * @return {Component} Wrapped component
  */
-function translatable(Component) {
+function translatable(Component, connect) {
 
   /* istanbul ignore if */
   if (Component.propTypes) {
@@ -42,10 +43,20 @@ function translatable(Component) {
     return I18n.t(key, opts, i18n.locale);
   };
 
-  return mobxReact.inject(config.injectFn)(mobxReact.observer(Component));
+  var observed = connect
+    ? mobxReact.observer(connect)(Component)
+    : mobxReact.observer(Component);
+  return mobxReact.inject(config.injectFn)(observed);
 }
 
 module.exports = {
   init: init,
-  translatable: translatable
+  translatable: function(arg) {
+    if (arg instanceof Array) {
+      return function(Component) {
+        return translatable(Component, arg);
+      }
+    }
+    return translatable(arg);
+  }
 }

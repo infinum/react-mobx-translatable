@@ -81,4 +81,35 @@ describe('react-mobx-translatable', function() {
     store.ui.i18n.locale = 'de';
     expect(wrapper.find('div').first().text()).to.equal('Hallo');
   });
+
+  it('should work with custom connectors', function() {
+    const store = {
+      data: observable({
+        foo: 1
+      }),
+      ui: {
+        i18n: observable({locale: 'en'})
+      }
+    };
+    init((store) => ({i18n: store.ui.i18n}));
+
+    class MyComponent extends React.Component {
+      render() {
+        expect(this.props.data).to.be.an('object');
+
+        return <div>{this.t('hello')}</div>;
+      }
+    }
+    MyComponent.propTypes = {
+      data: React.PropTypes.object
+    };
+    const MyWrappedComponent = translatable(['data'])(MyComponent);
+
+    const wrapper = mount(<Provider {...store}><MyWrappedComponent /></Provider>);
+
+    expect(wrapper.find('div').first().text()).to.equal('Hello');
+
+    store.ui.i18n.locale = 'de';
+    expect(wrapper.find('div').first().text()).to.equal('Hallo');
+  });
 });
