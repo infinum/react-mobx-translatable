@@ -4,6 +4,10 @@ Make React components translatable using MobX. Can be used both on the server (S
 
 Note: This plugin depends on ``mobx-react`` features that are currently marked as experimental: ``Provider`` and ``inject``.
 
+[![Build Status](https://travis-ci.org/infinum/react-mobx-translatable.svg?branch=master)](https://travis-ci.org/infinum/react-mobx-translatable)
+[![Dependency Status](https://david-dm.org/infinum/react-mobx-translatable.svg)](https://david-dm.org/infinum/react-mobx-translatable)
+[![devDependency Status](https://david-dm.org/infinum/react-mobx-translatable/dev-status.svg)](https://david-dm.org/infinum/react-mobx-translatable#info=devDependencies)
+
 ## Usage
 
 ### Checklist (see the example for more details)
