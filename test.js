@@ -112,4 +112,29 @@ describe('react-mobx-translatable', function() {
     store.ui.i18n.locale = 'de';
     expect(wrapper.find('div').first().text()).to.equal('Hallo');
   });
+
+  it('has should return if translation exists', function() {
+    let helloExists = false;
+    const store = {
+      i18n: observable({locale: 'en'})
+    };
+    init();
+
+    class MyComponent extends React.Component {
+      componentWillMount() {
+        const existsKey = this.has('hello');
+        const doesntExistsKey = this.has('unknown-key');
+
+        expect(existsKey).to.be.eq(true);
+        expect(doesntExistsKey).to.be.eq(false);
+      }
+
+      render() {
+        return <div>{this.t('hello')}</div>;
+      }
+    }
+    const MyWrappedComponent = translatable(MyComponent);
+
+    const wrapper = mount(<Provider {...store}><MyWrappedComponent /></Provider>);
+  });
 });

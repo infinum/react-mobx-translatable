@@ -101,7 +101,25 @@ export default class MyComponent extends Component {
 }
 ```
 
+### `has` method
+
+``` JavaScript
+import {Component} from 'react';
+import {translatable} from 'translatable';
+
+@translatable
+export default class MyComponent extends Component {
+  render() {
+    return <div>{this.has('hello') && this.t('hello')}</div>
+  }
+}
+```
+
 ## Changelog
+
+### v1.2.0
+
+* Expose `has` from [i18n-harmony lib](https://github.com/DarkoKukovec/i18n-harmony)
 
 ### v1.1.0
 

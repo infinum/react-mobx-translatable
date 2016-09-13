@@ -43,6 +43,15 @@ function translatable(Component, connect) {
     return I18n.t(key, opts, i18n.locale);
   };
 
+  Component.prototype.has = function(key, opts, includeDefault = false) {
+    var i18n = this.props.i18n;
+
+    // Forth argument is the locale that should be used
+    // We can't use the active one because of the SSR and shared I18n state
+    // Also, we need to observe i18n.locale to detect changes, so this is useful
+    return I18n.has(key, opts, includeDefault, i18n.locale);
+  };
+
   var observed = connect
     ? mobxReact.observer(connect)(Component)
     : mobxReact.observer(Component);
