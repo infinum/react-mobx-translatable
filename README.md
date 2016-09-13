@@ -10,7 +10,9 @@ Note: This plugin depends on ``mobx-react`` features that are currently marked a
 
 ## Installation
 
-    npm install react-mobx-translatable
+```Bash
+npm install react-mobx-translatable
+```
 
 ## Usage
 
@@ -53,45 +55,51 @@ This is however not a requirement.
 
 ### Initialize store, i18n, and translatable
 
-    import {observable} from 'mobx';
-    import i18n from 'i18n-harmony';
-    import {init} from 'translatable';
+```JavaScript
+import {observable} from 'mobx';
+import i18n from 'i18n-harmony';
+import {init} from 'translatable';
 
-    const defaultLocale = 'en'; // Can be based on browser language or user selection (localStorage, cookies)
+const defaultLocale = 'en'; // Can be based on browser language or user selection (localStorage, cookies)
 
-    const store = {
-      i18n: observable({locale: defaultLocale})
-    };
+const store = {
+  i18n: observable({locale: defaultLocale})
+};
 
-    // For details, see i18n-harmony: https://github.com/DarkoKukovec/i18n-harmony
-    i18n.init({
-      translations: {
-        en: {hello: 'Hello world!'}
-      }
-    });
+// For details, see i18n-harmony: https://github.com/DarkoKukovec/i18n-harmony
+i18n.init({
+  translations: {
+    en: {hello: 'Hello world!'}
+  }
+});
 
-    init((store) => ({i18n: store.i18n}));
+init((store) => ({i18n: store.i18n}));
+```
 
 ### Wrap your React components inside of the ``Provider`` componentand pass it the store
 
-    import {Provider} from 'mobx-react';
-    import store from './store';
+```JavaScript
+import {Provider} from 'mobx-react';
+import store from './store';
 
-    ReactDOM.render(<Provider {...store}>
-      <Router {...renderProps} />
-    </Provider>, document.getElementById('app'));
+ReactDOM.render(<Provider {...store}>
+  <Router {...renderProps} />
+</Provider>, document.getElementById('app'));
+```
 
 ### Translatable component
 
-    import {Component} from 'react';
-    import {translatable} from 'translatable';
+``` JavaScript
+import {Component} from 'react';
+import {translatable} from 'translatable';
 
-    @translatable
-    export default class MyComponent extends Component {
-      render() {
-        return <div>{this.t('hello')}</div>
-      }
-    }
+@translatable
+export default class MyComponent extends Component {
+  render() {
+    return <div>{this.t('hello')}</div>
+  }
+}
+```
 
 ## Changelog
 
