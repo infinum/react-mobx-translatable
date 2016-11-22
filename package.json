@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "i18n-harmony": "^1.4.0",
-    "mobx-react": "^3.5.3",
+    "mobx-react": "^4.0.0",
     "react": "^15.3.0"
   }
 }
