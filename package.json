@@ -32,7 +32,7 @@
     "babel-preset-react": "^6.11.1",
     "babel-register": "^6.11.6",
     "chai": "^3.5.0",
-    "enzyme": "^2.4.1",
+    "enzyme": "^2.8.1",
     "husky": "^0.13.0",
     "jsdom": "^9.4.1",
     "mobx": "^3.0.1",
