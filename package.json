@@ -34,7 +34,7 @@
     "chai": "^3.5.0",
     "enzyme": "^2.4.1",
     "husky": "^0.13.0",
-    "jsdom": "^9.4.1",
+    "jsdom": "^10.0.0",
     "mobx": "^3.0.1",
     "mocha": "^3.0.1",
     "react-addons-test-utils": "^15.3.0",
