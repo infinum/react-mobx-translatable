@@ -1,5 +1,7 @@
 # react-mobx-translatable
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/infinum/react-mobx-translatable.svg)](https://greenkeeper.io/)
+
 Make React components translatable using MobX. Can be used both on the server (SSR) and in the browser.
 
 Note: This plugin depends on ``mobx-react`` features that are currently marked as experimental: ``Provider`` and ``inject``.
