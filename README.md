@@ -76,7 +76,7 @@ i18n.init({
 init((store) => ({i18n: store.i18n}));
 ```
 
-### Wrap your React components inside of the ``Provider`` componentand pass it the store
+### Wrap your React components inside of the ``Provider`` component and pass it the store
 
 ```JavaScript
 import {Provider} from 'mobx-react';
